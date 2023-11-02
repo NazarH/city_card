@@ -1,0 +1,25 @@
+.content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table{
+    width: 70%;
+}
+
+.table-btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+a, a:hover{
+    color: white;
+}
+
+
+.add-form{
+    display: flex;
+    margin: 10px 0px;
+}
