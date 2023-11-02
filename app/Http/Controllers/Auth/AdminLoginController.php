@@ -7,9 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Http\RedirectResponse;
+
 class AdminLoginController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request): RedirectResponse
+    {
         $data = $request->validate(
             [
                 'login' => ['required', 'string'],

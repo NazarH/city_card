@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Http\RedirectResponse;
+
 class UserLoginController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request): RedirectResponse
+    {
         $data = $request->validate(
             [
                 'phone' => ['required', 'string'],
