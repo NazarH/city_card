@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 include(base_path('routes/userauth/web.php'));
 include(base_path('routes/adminauth/web.php'));
 include(base_path('routes/admin/web.php'));
+include(base_path('routes/user/web.php'));

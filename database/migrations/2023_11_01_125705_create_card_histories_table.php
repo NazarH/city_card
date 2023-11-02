@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('card_histories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('card_id');
             $table->string('rep_date')->nullable();
             $table->string('costs_date')->nullable();

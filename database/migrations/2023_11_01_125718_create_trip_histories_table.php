@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('trip_histories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('card_id');
             $table->unsignedBigInteger('transport_id');
             $table->timestamps();

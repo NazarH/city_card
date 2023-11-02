@@ -24,7 +24,7 @@ class UserLoginController extends Controller
         foreach($user->cards as $card){
             if($card->number === $data['number']){
                 Auth::login($user);
-                return redirect()->route('home');
+                return redirect()->route('welcome');
             }
         }
     }
