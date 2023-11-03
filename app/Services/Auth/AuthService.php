@@ -21,8 +21,7 @@ class AuthService
         );
         $user = User::where('phone', $data['phone'])->first();
         if ($user === null) return redirect()->route('login');
-        foreach($user->cards as $card)
-        {
+        foreach ($user->cards as $card) {
             if ($card->number === $data['number']) {
                 Auth::login($user);
                 return redirect()->route('welcome');
@@ -38,7 +37,7 @@ class AuthService
                 'password' => ['required', 'string']
             ]
         );
-        if(Auth::attempt($request->only('login', 'password'))){
+        if (Auth::attempt($request->only('login', 'password'))) {
             return redirect()->route('admin.index');
         } else return redirect()->route('login');
     }
