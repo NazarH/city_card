@@ -8,52 +8,94 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 
 <body>
+    <div class="back">
+        <a href="/">
+            <<< Home</a>
+    </div>
     <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID Картки</th>
-                    <th scope="col">Номер транспорту</th>
-                    <th scope="col">Дата</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($trip as $item)
+        <div class="card-block">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">{{$item->id}}</th>
-                        <td>{{$item->card_id}}</td>
-                        <td>{{$item->transport_id}}</td>
-                        <td>{{$item->created_at}}</td>
+                        <th scope="col">#</th>
+                        <th scope="col">Номер картки</th>
+                        <th scope="col">Баланс</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID Картки</th>
-                    <th scope="col">Дата поповнення</th>
-                    <th scope="col">Дата витрат</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($card_history as $item)
+                </thead>
+                <tbody>
+                    @foreach (Auth::user()->cards as $card)
+                        <tr>
+                            <th scope="row">{{ $card->id }}</th>
+                            <td>{{ $card->number }}</td>
+                            <td>{{ $card->cash }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <form action="{{ route('user.card') }}" method="POST" class="add-form">
+                @csrf
+                <input class="form-control" type="text" name="number" placeholder="Номер">
+                <button type='submit' class="btn btn-primary">
+                    Додати
+                </button>
+            </form>
+        </div>
+        <div class="info-block">
+            <select id='select-form' class="form-select mb-2 profile-form" aria-label="Default select example"
+                onchange="showForm()">
+                <option value="1" selected>Історія поїздок</option>
+                <option value="2">Історія карток</option>
+            </select>
+            <table class="table" id='profile-form-1'>
+                <thead>
                     <tr>
-                        <td>{{$item->id}}</td>
-                        <th scope="row">{{$item->card_id}}</th>
-                        <td>{{$item->rep_date}}</td>
-                        <td>{{$item->costs_date}}</td>
+                        <th scope="col">#</th>
+                        <th scope="col">ID Картки</th>
+                        <th scope="col">Номер транспорту</th>
+                        <th scope="col">Дата</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($trip as $item)
+                        <tr>
+                            <th scope="row">{{ $item->id }}</th>
+                            <td>{{ $item->card_id }}</td>
+                            <td>{{ $item->transport_id }}</td>
+                            <td>{{ $item->created_at }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <table class="table" id='profile-form-2'>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID Картки</th>
+                        <th scope="col">Дата поповнення</th>
+                        <th scope="col">Дата витрат</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($card_history as $item)
+                        <tr>
+                            <td scope="row">{{ $item->id }}</td>
+                            <th>{{ $item->card_id }}</th>
+                            <td>{{ $item->rep_date }}</td>
+                            <td>{{ $item->costs_date }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </body>
+
+<script type="text/javascript" src="{{ asset('js/profile.js') }}"></script>
 
 </html>

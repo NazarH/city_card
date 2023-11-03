@@ -8,24 +8,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
-class UserLoginController extends Controller
+use App\Http\Controllers\Auth\BaseController;
+
+class UserLoginController extends BaseController
 {
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): View|RedirectResponse
     {
-        $data = $request->validate(
-            [
-                'phone' => ['required', 'string'],
-                'number' => ['required', 'string']
-            ]
-        );
-
-        $user = User::where('phone', $data['phone'])->first();
-        foreach($user->cards as $card){
-            if($card->number === $data['number']){
-                Auth::login($user);
-                return redirect()->route('welcome');
-            }
-        }
+        return $this->service->user_login($request);
     }
 }

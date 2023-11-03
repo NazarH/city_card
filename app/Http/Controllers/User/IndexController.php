@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Card;
+use Illuminate\View\View;
 use App\Models\CardHistory;
 use App\Models\TripHistory;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class IndexController extends Controller
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\User\Profile\Request;
+use App\Http\Controllers\User\BaseController;
+
+class IndexController extends BaseController
 {
-    public function index()
+    public function index(): View
     {
-        $trip = TripHistory::where('user_id', Auth::user()->id)->get();
-        $card_history = CardHistory::where('user_id', Auth::user()->id)->get();
-        return view('user.index', compact('trip', 'card_history'));
+        return $this->service->index();
+    }
+
+    public function add(Request $request): RedirectResponse
+    {
+        return $this->service->add($request);
     }
 }

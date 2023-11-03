@@ -1,0 +1,34 @@
+#profile-form-2{
+    display: none;
+}
+
+#profile-form-1, #profile-form-2{
+    margin: 0 auto;
+}
+
+.profile-form{
+    margin: 15px 0px;
+    width: 70%;
+}
+
+.back{
+    margin: 10px;
+}
+
+.back a, .back a:hover{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.card-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

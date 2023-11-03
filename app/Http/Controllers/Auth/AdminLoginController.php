@@ -3,24 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Auth\BaseController;
 
-class AdminLoginController extends Controller
+class AdminLoginController extends BaseController
 {
     public function store(Request $request): RedirectResponse
     {
-        $data = $request->validate(
-            [
-                'login' => ['required', 'string'],
-                'password' => ['required', 'string']
-            ]
-        );
-        if(Auth::attempt($request->only('login', 'password'))){
-            return redirect()->route('admin.index');
-        }
+        return $this->service->admin_login($request);
     }
 }

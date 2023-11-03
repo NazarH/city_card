@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Transport;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\Transport\Request;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-
-class TransportController extends Controller
+class TransportController extends BaseController
 {
     public function index(): View
     {
@@ -19,8 +20,7 @@ class TransportController extends Controller
 
     public function post(Request $request): RedirectResponse
     {
-        $data = $request->validated();
-        Transport::create($data);
+        $this->sevice->post($request);
         return redirect()->route('admin.transport.index');
     }
 
@@ -31,8 +31,7 @@ class TransportController extends Controller
 
     public function update(Request $request, Transport $item): RedirectResponse
     {
-        $data = $request->validated();
-        $item->update($data);
+        $this->service->update($request, $item);
         return redirect()->route('admin.transport.index');
     }
 
