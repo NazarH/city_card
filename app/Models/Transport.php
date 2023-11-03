@@ -13,6 +13,6 @@ class Transport extends Model
 
     public function city()
     {
-        return $this->hasOne(City::class, 'id', 'city_id');
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }
