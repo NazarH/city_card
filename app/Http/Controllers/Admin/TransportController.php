@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\City;
 use App\Models\Transport;
 use Illuminate\View\View;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\Transport\Request;
@@ -14,13 +15,12 @@ class TransportController extends BaseController
 {
     public function index(): View
     {
-        $transport = Transport::all();
-        return view('admin.transport.index', compact('transport'));
+        return $this->service->index();
     }
 
     public function post(Request $request): RedirectResponse
     {
-        $this->sevice->post($request);
+        $this->service->post($request);
         return redirect()->route('admin.transport.index');
     }
 

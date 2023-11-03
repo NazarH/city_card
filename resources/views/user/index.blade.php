@@ -24,6 +24,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Номер картки</th>
+                        <th scope="col">Тип</th>
                         <th scope="col">Баланс</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                         <tr>
                             <th scope="row">{{ $card->id }}</th>
                             <td>{{ $card->number }}</td>
+                            <td>{{ $card->type }}</td>
                             <td>{{ $card->cash }}</td>
                         </tr>
                     @endforeach

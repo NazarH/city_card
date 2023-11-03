@@ -71,11 +71,17 @@
                with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.city.index') }}">
+                                <p>
+                                    Міста
+                                </p>
+                            </a>
                             <a href="{{ route('admin.transport.index') }}">
                                 <p>
                                     Транспорт
                                 </p>
                             </a>
+
                         </li>
 
                     </ul>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Transport;
+namespace App\Http\Requests\Admin\City;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,10 +23,7 @@ class Request extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => ['required', 'string', 'max:255'],
-            'number' => ['required', 'string', 'max:255', 'unique:transports'],
-            'city_id' => ['required', 'string', 'max:255'],
-            'price' => ['required', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255', 'unique:cities']
         ];
     }
 }

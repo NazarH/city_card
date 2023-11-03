@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('number')->nullable();
+            $table->string('type')->default('standart');
             $table->string('cash')->default('0');
             $table->timestamps();
         });

@@ -7,7 +7,11 @@
             <option value="Тролейбус">Тролейбус</option>
         </select>
         <input class="form-control" type="text" name="number" placeholder="Номер">
-        <input class="form-control" type="text" name="city" placeholder="Місто">
+        <select name="city_id" class="form-select">
+            @foreach ($cities as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+            @endforeach
+        </select>
         <input class="form-control" type="text" name="price" placeholder="Ціна">
         <button type='submit' class="btn btn-primary">
             Додати
@@ -28,7 +32,7 @@
                 <tr>
                     <td scope="row">{{ $item->type }}</td>
                     <td>{{ $item->number }}</td>
-                    <td>{{ $item->city }}</td>
+                    <td>{{ $item->city->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td class="table-btns">
                         <button class="btn btn-primary"><a
