@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('card_id');
-            $table->string('rep_date')->nullable();
-            $table->string('costs_date')->nullable();
+            $table->date('rep_date')->nullable();
+            $table->date('costs_date')->nullable();
             $table->timestamps();
         });
     }

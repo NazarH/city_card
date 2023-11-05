@@ -14,12 +14,25 @@
     justify-content: space-around;
 }
 
+.table-btns button{
+    padding: 0px 10px;
+}
+
 a, a:hover{
     color: white;
+}
+
+.table{
+    text-align: center;
 }
 
 
 .add-form{
     display: flex;
+    align-items: center;
     margin: 10px 0px;
+}
+
+.add-form * {
+    margin-right: 5px;
 }

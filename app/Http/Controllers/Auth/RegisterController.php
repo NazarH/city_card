@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\Card;
 use App\Models\User;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Auth\BaseController;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     /*
     |--------------------------------------------------------------------------
@@ -33,16 +34,6 @@ class RegisterController extends Controller
     protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -51,8 +42,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'phone' => ['required', 'string', 'max:255', 'unique:users'],
-            'card_number' => ['required', 'string', 'max:255']
+            'phone' => ['required', 'string', 'max:13', 'unique:users'],
+            'card_number' => ['required', 'string', 'max:7']
         ]);
     }
 
@@ -62,16 +53,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $data): User
     {
-        $user = User::create([
-            'phone' => $data['phone']
-        ]);
-        $card = Card::create([
-            'user_id' => $user->id,
-            'number' => $data['card_number'],
-            'cash' => '0'
-        ]);
-        return $user;
+        return $this->service->create($data);
     }
 }

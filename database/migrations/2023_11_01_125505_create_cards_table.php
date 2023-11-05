@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('number')->nullable();
+            $table->unsignedInteger('number')->nullable();
             $table->string('type')->default('standart');
-            $table->string('cash')->default('0');
+            $table->integer('cash')->default(0);
             $table->timestamps();
         });
     }

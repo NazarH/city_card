@@ -9,7 +9,7 @@
         <input class="form-control" type="text" name="number" placeholder="Номер">
         <select name="city_id" class="form-select">
             @foreach ($cities as $city)
-                <option value="{{$city->id}}">{{$city->name}}</option>
+                <option value="{{ $city->id }}">{{ $city->name }}</option>
             @endforeach
         </select>
         <input class="form-control" type="text" name="price" placeholder="Ціна">
@@ -17,14 +17,15 @@
             Додати
         </button>
     </form>
-    <table class="table">
+
+    <table id="example2" class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">Тип</th>
-                <th scope="col">Номер</th>
-                <th scope="col">Місто</th>
-                <th scope="col">Ціна</th>
-                <th scope="col"></th>
+                <th>Тип</th>
+                <th>Номер</th>
+                <th>Місто</th>
+                <th>Ціна</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +48,7 @@
                     </td>
                 </tr>
             @endforeach
-
         </tbody>
     </table>
+    <!-- /.card-body -->
 @endsection

@@ -7,7 +7,7 @@
             Додати
         </button>
     </form>
-    <table class="table">
+    <table id="example2" class="table table-bordered">
         <thead>
             <tr>
                 <th scope="col">#</th>

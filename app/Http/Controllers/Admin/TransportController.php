@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\City;
 use App\Models\Transport;
-use Illuminate\View\View;
 
-use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+
 use App\Http\Controllers\Admin\BaseController;
+
 use App\Http\Requests\Admin\Transport\Request;
+use App\Http\Requests\Admin\Transport\UpdateRequest;
 
 class TransportController extends BaseController
 {
@@ -26,10 +28,11 @@ class TransportController extends BaseController
 
     public function edit(Transport $item): View
     {
-        return view('admin.transport.edit', compact('item'));
+        $cities = City::all();
+        return view('admin.transport.edit', compact('item', 'cities'));
     }
 
-    public function update(Request $request, Transport $item): RedirectResponse
+    public function update(UpdateRequest $request, Transport $item): RedirectResponse
     {
         $this->service->update($request, $item);
         return redirect()->route('admin.transport.index');

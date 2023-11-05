@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin\Transport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class Request extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class Request extends FormRequest
     {
         return [
             'type' => ['required', 'string'],
-            'number' => ['required', 'string', 'max:255', 'unique:transports'],
+            'number' => ['required', 'string', 'max:255'],
             'city_id' => ['required', 'integer'],
             'price' => ['required', 'integer']
         ];

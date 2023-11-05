@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 
-<body>
+<body id="profile">
     <div class="back">
         <a href="/">
             <<< Home</a>
     </div>
     <div class="container">
         <div class="card-block">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -39,6 +39,7 @@
                     @endforeach
                 </tbody>
             </table>
+
             <form action="{{ route('user.card') }}" method="POST" class="add-form">
                 @csrf
                 <input class="form-control" type="text" name="number" placeholder="Номер">
@@ -53,7 +54,7 @@
                 <option value="1" selected>Історія поїздок</option>
                 <option value="2">Історія карток</option>
             </select>
-            <table class="table" id='profile-form-1'>
+            <table id='profile-form-1' class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -73,7 +74,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <table class="table" id='profile-form-2'>
+            <table id='profile-form-2' class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

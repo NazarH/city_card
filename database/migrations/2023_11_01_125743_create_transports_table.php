@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('number')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->string('price')->nullable();
+            $table->unsignedInteger('price')->nullable();
             $table->timestamps();
         });
     }

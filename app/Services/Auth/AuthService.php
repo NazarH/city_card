@@ -2,15 +2,28 @@
 
 namespace App\Services\Auth;
 
+use App\Models\Card;
+
 use App\Models\User;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 class AuthService
 {
+    public function create(array $data): User
+    {
+        $user = User::create([
+            'phone' => $data['phone']
+        ]);
+        $card = Card::create([
+            'user_id' => $user->id,
+            'number' => $data['card_number']
+        ]);
+        return $user;
+    }
+
     public function user_login(Request $request): RedirectResponse
     {
         $data = $request->validate(
