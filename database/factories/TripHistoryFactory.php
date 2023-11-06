@@ -21,8 +21,8 @@ class TripHistoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
-            'card_id' => 1234567,
+            'user_id' => rand(1,6),
+            'card_id' => rand(1,4),
             'transport_id' => random_int(1, 30)
         ];
     }
